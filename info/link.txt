@@ -1,0 +1,10 @@
+link=pe-a-1,pe-a-2
+link=pe-a-1,p-1
+link=pe-a-2,p-2
+link=p-1,p-2
+link=p-1,p-3
+link=p-2,p-4
+link=p-3,p-4
+link=p-3,pe-b-1
+link=p-4,pe-b-2
+link=pe-b-1,pe-b-2

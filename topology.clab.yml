@@ -1,0 +1,14 @@
+name: carrier-backbone
+
+topology:
+  nodes:
+    bb:
+      kind: juniper_vjunosswitch
+      image: vrnetlab/juniper_vjunos-router:23.2R1.15
+      startup-config: config/bb.config
+    ce-a-1:
+      kind: ceos
+      image: ceos:4.31.3M
+
+  links:
+      - endpoints: ["bb:eth1", "ce-a-1:eth1"]
