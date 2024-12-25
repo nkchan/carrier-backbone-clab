@@ -5,10 +5,26 @@ topology:
     bb:
       kind: juniper_vjunosswitch
       image: vrnetlab/juniper_vjunos-router:23.2R1.15
-      startup-config: config/bb.config
+      startup-config: clab-carrier-backbone/bb/config/startup-config.cfg
     ce-a-1:
       kind: ceos
       image: ceos:4.31.3M
+      startup-config: clab-carrier-backbone/ce-a-1/flash/startup-config
+    ce-a-2:
+      kind: ceos
+      image: ceos:4.31.3M
+      startup-config: clab-carrier-backbone/ce-a-2/flash/startup-config
+    ce-b-1:
+      kind: ceos
+      image: ceos:4.31.3M
+      startup-config: clab-carrier-backbone/ce-b-1/flash/startup-config
+    ce-b-2:
+      kind: ceos
+      image: ceos:4.31.3M
+      startup-config: clab-carrier-backbone/ce-b-2/flash/startup-config
 
   links:
       - endpoints: ["bb:eth1", "ce-a-1:eth1"]
+      - endpoints: ["bb:eth2", "ce-a-2:eth1"]
+      - endpoints: ["bb:eth3", "ce-b-1:eth1"]
+      - endpoints: ["bb:eth4", "ce-b-2:eth1"]

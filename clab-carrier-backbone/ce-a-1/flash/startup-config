@@ -1,0 +1,43 @@
+! Startup-config last modified at Tue Dec 24 20:56:38 2024 by root
+! device: ce-a-1 (cEOSLab, EOS-4.31.3M-36737551.4313M (engineering build))
+!
+no aaa root
+!
+username admin privilege 15 role network-admin secret sha512 $6$G7fmnzj0gcOw/kQS$nf1PsWy18AtCIh69ZexfdQPURpwutBBh/cdCV.T/snH.1nVJp.ktm/yQxpiXFyifRSi56EZuVycNfSxeM8Hss.
+username kaoru privilege 15 role network-admin secret sha512 $6$y1iAThcOQQNvJujr$0rSArFgWWb0OexK4VvXZH.spqthftlujXora24VTabSyIz4ZO7cfOats/EDKf4rtVDX.4i15IFFwe0vACnqpv.
+username kaoru ssh-key ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINqUT/BQCXNZePSgb3CfDVNnjRkpKv/nyKhItebl7Piw
+!
+transceiver qsfp default-mode 4x10G
+!
+service routing protocols model multi-agent
+!
+hostname ce-a-1
+!
+spanning-tree mode mstp
+!
+system l1
+   unsupported speed action error
+   unsupported error-correction action error
+!
+management api http-commands
+   no shutdown
+!
+management api gnmi
+   transport grpc default
+!
+management api netconf
+   transport ssh default
+!
+interface Ethernet1
+!
+interface Management0
+   ip address 172.20.20.4/24
+   ipv6 address 3fff:172:20:20::4/64
+!
+no ip routing
+!
+ip route 0.0.0.0/0 172.20.20.1
+!
+ipv6 route ::/0 3fff:172:20:20::1
+!
+end
